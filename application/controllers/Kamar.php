@@ -7,6 +7,7 @@ class Kamar extends CI_Controller
     {
         parent::__construct();
 
+    
         if (!$this->session->userdata('login')) {
             redirect('login');
         }
