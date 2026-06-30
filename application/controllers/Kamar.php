@@ -1,84 +1,83 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tipe_kamar extends CI_Controller
+class Kamar extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
 
-        // Cek login
         if (!$this->session->userdata('login')) {
             redirect('login');
         }
 
-        $this->load->model('Tipe_kamar_model');
+        $this->load->model('Kamar_model');
     }
 
     public function index()
     {
-        $data['tipe_kamar'] = $this->Tipe_kamar_model->getAll();
+        $data['kamar'] = $this->Kamar_model->get_all();
 
         $this->load->view('templates/header');
         $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
-        $this->load->view('tipe_kamar/index', $data);
+        $this->load->view('kamar/index', $data);
         $this->load->view('templates/footer');
     }
 
     public function tambah()
-{
-    if ($this->input->post()) {
+    {
+        if ($this->input->post()) {
 
-        $data = [
-            'nama_tipe'  => $this->input->post('nama_tipe'),
-            'harga'      => $this->input->post('harga'),
-            'kapasitas'  => $this->input->post('kapasitas'),
-            'keterangan' => $this->input->post('keterangan')
-        ];
+            $data = [
+                'nomor_kamar' => $this->input->post('nomor_kamar'),
+                'id_tipe'     => $this->input->post('id_tipe'),
+                'status'      => $this->input->post('status')
+            ];
 
-        $this->Tipe_kamar_model->insert($data);
+            $this->Kamar_model->insert($data);
 
-        redirect('tipe_kamar');
+            redirect('kamar');
+        }
+
+        $data['tipe'] = $this->Kamar_model->get_tipe();
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/navbar');
+        $this->load->view('templates/sidebar');
+        $this->load->view('kamar/tambah', $data);
+        $this->load->view('templates/footer');
     }
 
-    $this->load->view('templates/header');
-    $this->load->view('templates/navbar');
-    $this->load->view('templates/sidebar');
-    $this->load->view('tipe_kamar/tambah');
-    $this->load->view('templates/footer');
-}
-public function edit($id)
-{
-    if ($this->input->post()) {
+    public function edit($id)
+    {
+        if ($this->input->post()) {
 
-        $data = [
-            'nama_tipe'  => $this->input->post('nama_tipe'),
-            'harga'      => $this->input->post('harga'),
-            'kapasitas'  => $this->input->post('kapasitas'),
-            'keterangan' => $this->input->post('keterangan')
-        ];
+            $data = [
+                'nomor_kamar' => $this->input->post('nomor_kamar'),
+                'id_tipe'     => $this->input->post('id_tipe'),
+                'status'      => $this->input->post('status')
+            ];
 
-        $this->Tipe_kamar_model->update($id, $data);
+            $this->Kamar_model->update($id, $data);
 
-        redirect('tipe_kamar');
+            redirect('kamar');
+        }
+
+        $data['kamar'] = $this->Kamar_model->getById($id);
+        $data['tipe']  = $this->Kamar_model->get_tipe();
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/navbar');
+        $this->load->view('templates/sidebar');
+        $this->load->view('kamar/edit', $data);
+        $this->load->view('templates/footer');
     }
 
-    $data['tipe'] = $this->Tipe_kamar_model->getById($id);
+    public function hapus($id)
+    {
+        $this->Kamar_model->delete($id);
 
-    $this->load->view('templates/header');
-    $this->load->view('templates/navbar');
-    $this->load->view('templates/sidebar');
-    $this->load->view('tipe_kamar/edit', $data);
-    $this->load->view('templates/footer');
-}
-
-public function hapus($id)
-{
-    $this->Tipe_kamar_model->delete($id);
-
-    redirect('tipe_kamar');
-}
-
+        redirect('kamar');
+    }
 }
