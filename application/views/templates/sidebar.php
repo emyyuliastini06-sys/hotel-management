@@ -36,10 +36,10 @@
 
             <small class="text-white ms-3">TRANSAKSI</small>
 
-            <a href="<?= site_url('booking'); ?>">
-                <i class="bi bi-journal-bookmark"></i>
-                Booking
-            </a>
+            <a href="<?= site_url('pemesanan'); ?>">
+    <i class="bi bi-journal-bookmark"></i>
+    Pemesanan
+</a>
 
             <a href="<?= site_url('checkin'); ?>">
                 <i class="bi bi-box-arrow-in-right"></i>
