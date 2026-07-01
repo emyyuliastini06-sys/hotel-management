@@ -37,18 +37,8 @@
             <small class="text-white ms-3">TRANSAKSI</small>
 
             <a href="<?= site_url('pemesanan'); ?>">
-    <i class="bi bi-journal-bookmark"></i>
-    Pemesanan
-</a>
-
-            <a href="<?= site_url('checkin'); ?>">
-                <i class="bi bi-box-arrow-in-right"></i>
-                Check In
-            </a>
-
-            <a href="<?= site_url('checkout'); ?>">
-                <i class="bi bi-box-arrow-right"></i>
-                Check Out
+                <i class="bi bi-journal-bookmark"></i>
+                Pemesanan
             </a>
 
             <a href="<?= site_url('pembayaran'); ?>">
@@ -57,11 +47,6 @@
             </a>
 
             <hr class="text-white">
-
-            <a href="<?= site_url('laporan'); ?>">
-                <i class="bi bi-bar-chart"></i>
-                Laporan
-            </a>
 
             <a href="<?= site_url('login/logout'); ?>">
                 <i class="bi bi-box-arrow-left"></i>
