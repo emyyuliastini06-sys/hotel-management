@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2026 at 06:33 PM
+-- Generation Time: Jul 01, 2026 at 06:49 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -34,6 +34,14 @@ CREATE TABLE `kamar` (
   `status` enum('Tersedia','Terisi','Maintenance') DEFAULT 'Tersedia'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `kamar`
+--
+
+INSERT INTO `kamar` (`id_kamar`, `nomor_kamar`, `id_tipe`, `status`) VALUES
+(1, '101', 1, 'Terisi'),
+(2, '102', 1, 'Terisi');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +56,13 @@ CREATE TABLE `pembayaran` (
   `metode_pembayaran` enum('Cash','Transfer','QRIS') DEFAULT NULL,
   `status` enum('Lunas','Belum Lunas') DEFAULT 'Belum Lunas'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pembayaran`
+--
+
+INSERT INTO `pembayaran` (`id_pembayaran`, `id_pemesanan`, `tanggal_bayar`, `total_bayar`, `metode_pembayaran`, `status`) VALUES
+(1, 1, '2026-07-01', 250000.00, 'Cash', 'Lunas');
 
 -- --------------------------------------------------------
 
@@ -65,6 +80,13 @@ CREATE TABLE `pemesanan` (
   `status` enum('Booking','Check In','Check Out') DEFAULT 'Booking'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `pemesanan`
+--
+
+INSERT INTO `pemesanan` (`id_pemesanan`, `id_tamu`, `id_kamar`, `tanggal_checkin`, `tanggal_checkout`, `jumlah_tamu`, `status`) VALUES
+(1, 1, 2, '2026-07-01', '2026-07-02', 1, 'Check In');
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +102,13 @@ CREATE TABLE `tamu` (
   `alamat` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tamu`
+--
+
+INSERT INTO `tamu` (`id_tamu`, `nik`, `nama_tamu`, `jenis_kelamin`, `no_hp`, `alamat`) VALUES
+(1, '9283298323988932', 'saskia', 'P', '083791989823', 'KEKALEK');
+
 -- --------------------------------------------------------
 
 --
@@ -91,8 +120,17 @@ CREATE TABLE `tipe_kamar` (
   `nama_tipe` varchar(100) NOT NULL,
   `harga` decimal(12,2) NOT NULL,
   `kapasitas` int(11) NOT NULL,
-  `fasilitas` text DEFAULT NULL
+  `keterangan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tipe_kamar`
+--
+
+INSERT INTO `tipe_kamar` (`id_tipe`, `nama_tipe`, `harga`, `kapasitas`, `keterangan`) VALUES
+(1, 'Standard', 350000.00, 2, 'Kamar Standard'),
+(2, 'Superior', 500000.00, 2, 'Kamar Superior'),
+(3, 'Deluxe', 750000.00, 3, 'Kamar Deluxe');
 
 -- --------------------------------------------------------
 
@@ -167,31 +205,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `kamar`
 --
 ALTER TABLE `kamar`
-  MODIFY `id_kamar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kamar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tamu`
 --
 ALTER TABLE `tamu`
-  MODIFY `id_tamu` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tamu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tipe_kamar`
 --
 ALTER TABLE `tipe_kamar`
-  MODIFY `id_tipe` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
