@@ -88,4 +88,39 @@ class Pemesanan extends CI_Controller
 
         redirect('pemesanan');
     }
+    public function checkin($id)
+{
+    $this->Pemesanan_model->update($id, [
+        'status' => 'Check In'
+    ]);
+
+    // Ambil data pemesanan
+    $pemesanan = $this->Pemesanan_model->getById($id);
+
+    // Update status kamar
+    $this->db->where('id_kamar', $pemesanan->id_kamar);
+    $this->db->update('kamar', [
+        'status' => 'Terisi'
+    ]);
+
+    redirect('pemesanan');
+}
+
+public function checkout($id)
+{
+    $this->Pemesanan_model->update($id, [
+        'status' => 'Check Out'
+    ]);
+
+    // Ambil data pemesanan
+    $pemesanan = $this->Pemesanan_model->getById($id);
+
+    // Update status kamar
+    $this->db->where('id_kamar', $pemesanan->id_kamar);
+    $this->db->update('kamar', [
+        'status' => 'Tersedia'
+    ]);
+
+    redirect('pemesanan');
+}
 }

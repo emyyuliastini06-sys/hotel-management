@@ -86,21 +86,38 @@
 
             <td>
 
-                <a href="<?= site_url('pemesanan/edit/'.$row->id_pemesanan); ?>" class="btn btn-warning btn-sm">
+    <a href="<?= site_url('pemesanan/edit/'.$row->id_pemesanan); ?>"
+       class="btn btn-warning btn-sm">
+        Edit
+    </a>
 
-                    Edit
+    <a href="<?= site_url('pemesanan/hapus/'.$row->id_pemesanan); ?>"
+       onclick="return confirm('Hapus data?')"
+       class="btn btn-danger btn-sm">
+        Hapus
+    </a>
 
-                </a>
+    <br><br>
 
-                <a href="<?= site_url('pemesanan/hapus/'.$row->id_pemesanan); ?>"
-                   onclick="return confirm('Hapus data?')"
-                   class="btn btn-danger btn-sm">
+    <?php if($row->status=='Booking'): ?>
 
-                    Hapus
+        <a href="<?= site_url('pemesanan/checkin/'.$row->id_pemesanan); ?>"
+           class="btn btn-success btn-sm w-100">
+            Check In
+        </a>
 
-                </a>
+    <?php endif; ?>
 
-            </td>
+    <?php if($row->status=='Check In'): ?>
+
+        <a href="<?= site_url('pemesanan/checkout/'.$row->id_pemesanan); ?>"
+           class="btn btn-info btn-sm w-100">
+            Check Out
+        </a>
+
+    <?php endif; ?>
+
+</td>
 
         </tr>
 
