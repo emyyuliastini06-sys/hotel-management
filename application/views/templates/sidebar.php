@@ -42,16 +42,25 @@
             </a>
 
             <a href="<?= site_url('pembayaran'); ?>">
-                <i class="bi bi-cash-coin"></i>
-                Pembayaran
-            </a>
+    <i class="bi bi-cash-coin"></i>
+    Pembayaran
+</a>
 
-            <hr class="text-white">
+<hr class="text-white">
 
-            <a href="<?= site_url('login/logout'); ?>">
-                <i class="bi bi-box-arrow-left"></i>
-                Logout
-            </a>
+<small class="text-white ms-3">LAPORAN</small>
+
+<a href="<?= site_url('laporan'); ?>">
+    <i class="bi bi-bar-chart"></i>
+    Laporan
+</a>
+
+<hr class="text-white">
+
+<a href="<?= site_url('login/logout'); ?>">
+    <i class="bi bi-box-arrow-left"></i>
+    Logout
+</a>
 
         </div>
 

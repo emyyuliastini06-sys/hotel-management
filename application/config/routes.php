@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['tamu'] = 'tamu';
 $route['pemesanan'] = 'pemesanan';
 $route['pembayaran'] = 'pembayaran';
+$route['laporan'] = 'laporan';
