@@ -1,71 +1,102 @@
 ###################
-What is CodeIgniter
+Sistem Manajemen Hotel
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+Aplikasi web untuk mengelola operasional hotel sehari-hari — mulai dari pemesanan kamar, data tamu, pembayaran, hingga laporan dalam satu sistem yang mudah digunakan
 
 *******************
-Release Information
+Tentang Aplikasi WEB
 *******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+Sistem Manajemen Hotel ini dibuat untuk membantu pihak hotel (admin & resepsionis) mengelola kegiatan operasional secara digital, menggantikan pencatatan manual. Dengan aplikasi ini, proses check-in, pemesanan kamar, hingga pembuatan laporan menjadi lebih cepat, rapi, dan minim kesalahan.
+
+Cocok untuk: hotel, penginapan, guest house, atau homestay skala kecil-menengah yang ingin beralih dari pencatatan manual ke sistem digital.
 
 **************************
-Changelog and New Features
+Fitur Utama
 **************************
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+Login Multi-Role — akses berbeda untuk Admin, Resepsionis, dan Tamu
+Dashboard — ringkasan informasi hotel secara cepat
+Manajemen Kamar — kelola data kamar yang tersedia
+Tipe Kamar — atur kategori dan harga kamar (Standard, Deluxe, Suite, dll.)
+Pemesanan (Booking) — proses reservasi kamar oleh tamu
+Data Tamu — pengelolaan informasi tamu yang menginap
+Pembayaran — pencatatan transaksi pembayaran tamu
+Laporan — rekap data untuk kebutuhan administrasi hotel
 
 *******************
-Server Requirements
+Teknologi yang Digunakan
 *******************
 
-PHP version 5.6 or newer is recommended.
-
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+Framework: CodeIgniter 3 (PHP)
+Database: MySQL
+Bahasa: PHP, JavaScript, HTML, CSS
 
 ************
-Installation
+Yang Perlu Disiapkan
 ************
 
-Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
-of the CodeIgniter User Guide.
+Sebelum menjalankan aplikasi ini, pastikan perangkat sudah memiliki:
+
+XAMPP  versi 3.0.30 / Laragon (atau web server + PHP + MySQL sejenis)
+PHP versi 5.6 atau lebih baru
+Composer (opsional, jika ingin mengelola dependency)
 
 *******
-License
+Cara Menjalankan
 *******
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+1. Clone repository ini
+
+		git clone https://github.com/emyyuliastini06-sys/hotel-management.git
+
+2. Pindahkan folder project ke direktori web server, contoh:
+
+		htdocs/hotel-management   (untuk XAMPP)
+		www/hotel-management      (untuk Laragon)
+
+3. Buat database baru di phpMyAdmin dengan nama hotel_management
+4. Import file database yang tersedia di:
+
+		database/hotel_management.sql
+
+5. Sesuaikan konfigurasi database di file application/config/database.php:
+
+		'hostname' => 'localhost',
+   'username' => 'root',
+   'password' => '',
+   'database' => 'hotel_management',
+
+6.Jalankan aplikasi melalui browser:
+
+	http://localhost/hotel-management
 
 *********
-Resources
+Login Default
 *********
 
--  `User Guide <https://codeigniter.com/docs>`_
--  `Contributing Guide <https://github.com/bcit-ci/CodeIgniter/blob/develop/contributing.md>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
+Setelah instalasi, gunakan akun berikut untuk masuk sebagai admin:
+Username : admin
+Password : admin123
 
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
+⚠️ Password admin tersimpan dalam bentuk terenkripsi di database (tabel users). Disarankan untuk mengganti password default setelah berhasil login demi keamanan.
 
 ***************
-Acknowledgement
+FAQ
 ***************
 
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+Apakah aplikasi ini gratis digunakan?
+Ya, proyek ini open source dan bebas digunakan/dimodifikasi.
+
+Apakah bisa dijalankan tanpa internet?
+Bisa, karena aplikasi berjalan secara lokal menggunakan XAMPP/Laragon.
+
+Bagaimana jika lupa password admin?
+Password dapat direset langsung melalui database (tabel users) oleh pihak yang memiliki akses ke phpMyAdmin.
+
+***************
+Lisenssi
+***************
+
+Proyek ini menggunakan lisensi MIT.
